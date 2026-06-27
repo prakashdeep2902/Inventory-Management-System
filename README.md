@@ -1,6 +1,8 @@
 # Inventory Management System
 
-A full-stack Inventory Management System built as a technical assignment.
+A full-stack Inventory Management System built using **Next.js**, **Node.js**, **Express.js**, **MySQL**, and **Prisma**. The application allows users to manage products, inventory, orders, and stock history while maintaining accurate stock levels through automatic stock updates.
+
+---
 
 ## Tech Stack
 
@@ -9,80 +11,154 @@ A full-stack Inventory Management System built as a technical assignment.
 - Next.js (App Router)
 - TypeScript
 - Tailwind CSS
+- Axios
+- React Hook Form
+- Sonner (Toast Notifications)
 
 ### Backend
 
 - Node.js
-- Express.js (JavaScript)
+- Express.js
+- Prisma ORM
+- JWT Authentication
+- bcrypt
+- Express Validator
 
 ### Database
 
 - MySQL
-- Prisma ORM v6
-
-### Authentication
-
-- JWT (Planned)
-- bcrypt (Planned)
-
-### API Testing
-
-- Postman
 
 ---
 
-## Project Progress
+# Features
 
-### ✅ Step 1: Project Planning
+## Authentication
 
-- Designed the overall project architecture.
-- Identified modules based on assignment requirements.
-- Planned folder structure for frontend and backend.
+- User Login
+- JWT Authentication
+- Protected Routes
+- Password Hashing using bcrypt
 
-### ✅ Step 2: Frontend Setup
+---
 
-- Created Next.js project using App Router.
-- Configured TypeScript.
-- Installed and configured Tailwind CSS.
+## Product Management
 
-### ✅ Step 3: Database Design
+- Create Product
+- Update Product
+- Delete Product
+- View Products
+- Product Search
+- Product Pagination
+- Unique SKU Validation
 
-Designed the database schema for:
+---
 
-- Users
-- Products
-- Orders
-- Order Items
-- Stock History
+## Stock Management
 
-Defined relationships between entities to support inventory operations.
+- Add Stock
+- Update Current Stock Automatically
+- Prevent Negative Stock
+- Create Stock History on Every Stock Addition
 
-### ✅ Step 4: Backend Setup
+---
 
-- Initialized Express.js project.
-- Created modular folder structure.
-- Configured environment variables.
-- Installed required dependencies.
+## Order Management
 
-### ✅ Step 5: Express Configuration
+- Create Order
+- Multiple Products Per Order
+- Automatic Stock Deduction
+- View Orders
+- View Order Details
 
-- Configured Express server.
-- Added middleware:
-  - express.json()
-  - CORS
-  - dotenv
-- Verified server startup.
+---
 
-### ✅ Step 6: Prisma & MySQL Configuration
+## Order Cancellation
 
-- Installed Prisma ORM v6.
-- Connected Prisma to MySQL.
-- Configured `.env` with database connection.
-- Generated Prisma Client.
+- Cancel Existing Order
+- Restore Product Stock
+- Record Stock History
 
-### ✅ Step 7: Prisma Database Models
+---
 
-Created database models for:
+## Stock History
+
+Tracks every inventory movement:
+
+- Stock Added
+- Order Placed
+- Order Cancelled
+
+Each history record stores:
+
+- Product
+- Action
+- Quantity
+- Previous Stock
+- New Stock
+- Date & Time
+
+---
+
+## Dashboard
+
+Displays:
+
+- Total Products
+- Total Orders
+- Total Stock
+- Recent Orders
+- Recent Stock Activities
+
+---
+
+# Business Rules
+
+- Stock can never become negative.
+- Every stock movement creates a history record.
+- Order placement deducts stock automatically.
+- Order cancellation restores stock automatically.
+- SKU must be unique.
+- JWT Authentication is required for protected APIs.
+- Database transactions are used for data consistency.
+
+---
+
+# Project Structure
+
+```
+Inventory-Management-System
+
+├── backend
+│   ├── prisma
+│   ├── src
+│   │   ├── config
+│   │   ├── controllers
+│   │   ├── middleware
+│   │   ├── routes
+│   │   ├── services
+│   │   ├── utils
+│   │   ├── validations
+│   │   ├── app.js
+│   │   └── server.js
+│   └── package.json
+│
+├── frontend
+│   ├── src
+│   │   ├── app
+│   │   ├── components
+│   │   ├── context
+│   │   ├── hooks
+│   │   ├── services
+│   │   ├── types
+│   │   └── utils
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+# Database Tables
 
 - User
 - Product
@@ -90,75 +166,197 @@ Created database models for:
 - OrderItem
 - StockHistory
 
-Implemented:
-
-- Enums
-- Relationships
-- Primary Keys
-- Foreign Keys
-- Timestamps
-
-### ✅ Step 8: Database Migration
-
-- Created MySQL tables using Prisma Migration.
-- Generated Prisma Client successfully.
-- Verified database schema.
-
 ---
 
-## Assignment Features (Planned)
+# Installation
 
-- User Authentication (JWT)
-- Role-Based Authorization
-- Product Management
-- Stock Management
-- Order Management
-- Order Cancellation
-- Stock History
-- Dashboard
-- Database Transactions
-- Prevent Negative Stock
-- RESTful APIs
-- Responsive Frontend
+## Clone Repository
 
----
-
-## Current Status
-
-✔ Project structure completed
-
-✔ Database connected
-
-✔ Prisma configured
-
-✔ Database schema created
-
-🔄 Authentication module in progress
-
----
-
-## Project Structure
-
-```text
-inventory-management-system/
-│
-├── frontend/
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   └── public/
-│
-├── backend/
-│   ├── prisma/
-│   ├── src/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   └── utils/
-│   ├── package.json
-│   └── .env
-│
-└── README.md
+```bash
+git clone <repository-url>
 ```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file.
+
+```env
+PORT=5000
+
+DATABASE_URL="mysql://root:YOUR_PASSWORD@localhost:3306/inventory_db"
+
+JWT_SECRET=your_secret_key
+
+JWT_EXPIRES_IN=1d
+```
+
+Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+Run Migration
+
+```bash
+npx prisma migrate dev
+```
+
+Start Backend
+
+```bash
+npm run dev
+```
+
+Backend runs on
+
+```
+http://localhost:5000
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+Frontend runs on
+
+```
+http://localhost:3000
+```
+
+---
+
+# API Modules
+
+## Authentication
+
+```
+POST   /api/auth/register
+POST   /api/auth/login
+```
+
+---
+
+## Products
+
+```
+GET    /api/products
+GET    /api/products/:id
+POST   /api/products
+PUT    /api/products/:id
+DELETE /api/products/:id
+```
+
+---
+
+## Stock
+
+```
+POST   /api/stock/add
+GET    /api/stock/history
+```
+
+---
+
+## Orders
+
+```
+POST   /api/orders
+GET    /api/orders
+GET    /api/orders/:id
+PUT    /api/orders/:id/cancel
+```
+
+---
+
+## Dashboard
+
+```
+GET    /api/dashboard
+```
+
+---
+
+# Authentication
+
+After login, JWT Token must be included in every protected request.
+
+```
+Authorization: Bearer <token>
+```
+
+---
+
+# Frontend Pages
+
+- Login
+- Dashboard
+- Products
+- Inventory
+- Orders
+- Stock History
+
+---
+
+# Validation
+
+### Product
+
+- SKU Required
+- SKU Unique
+- Price > 0
+
+### Stock
+
+- Quantity > 0
+
+### Orders
+
+- Quantity > 0
+- Stock Availability Check
+
+---
+
+# Assignment Deliverables
+
+- Backend Source Code
+- Frontend Source Code
+- Database Schema
+- API Documentation
+- Postman Collection
+- README
+
+---
+
+# Future Improvements
+
+- User Roles (Admin / Staff)
+- Low Stock Notifications
+- Export Orders to Excel/PDF
+- Product Categories
+- Customer Management
+- Analytics Dashboard
+- Image Upload for Products
+
+---
+
+# Author
+
+**Prakash Deep Sharma**
+
+Inventory Management System Assignment
