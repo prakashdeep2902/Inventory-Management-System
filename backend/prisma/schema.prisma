@@ -38,18 +38,17 @@ model User {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   name        String
   description String?
-  sku         String  @unique
-  price       Decimal @db.Decimal(10, 2)
-  quantity    Int     @default(0)
-
-  orderItems OrderItem[]
-  stockLogs  StockHistory[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  sku         String         @unique
+  price       Decimal        @db.Decimal(10, 2)
+  quantity    Int            @default(0)
+  isActive    Boolean        @default(true)
+  orderItems  OrderItem[]
+  stockLogs   StockHistory[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
 }
 
 model Order {
@@ -85,16 +84,11 @@ model OrderItem {
 }
 
 model StockHistory {
-  id Int @id @default(autoincrement())
-
+  id        Int         @id @default(autoincrement())
   productId Int
-  product   Product @relation(fields: [productId], references: [id])
-
-  action StockAction
-
-  quantity Int
-
-  note String?
-
-  createdAt DateTime @default(now())
+  product   Product     @relation(fields: [productId], references: [id])
+  action    StockAction
+  quantity  Int
+  note      String?
+  createdAt DateTime    @default(now())
 }

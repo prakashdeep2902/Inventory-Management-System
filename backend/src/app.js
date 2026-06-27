@@ -5,6 +5,9 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import { healthCheck } from "./controllers/health.controller.js";
+import authRoutes from "./routes/auth.routes.js";
+import productRoutes from "./routes/product.routes.js";
+import stockRoutes from "./routes/stock.routes.js";
 
 dotenv.config();
 
@@ -22,12 +25,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "Inventory Management API Running",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.json({
+//     success: true,
+//     message: "Inventory Management API Running",
+//   });
+// });
 
-app.use("/api/health", healthCheck);
+// app.use("/api/health", healthCheck);
+
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/stock", stockRoutes);
 export default app;
