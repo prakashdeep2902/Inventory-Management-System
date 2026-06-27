@@ -9,6 +9,7 @@ import { Product } from "@/types/product";
 import ProductToolbar from "@/components/products/ProductToolbar";
 import ProductTable from "@/components/products/ProductTable";
 import ProductDialog from "@/components/products/ProductDialog";
+import DeleteProductDialog from "@/components/products/DeleteProductDialog";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -17,6 +18,11 @@ export default function ProductsPage() {
   const [search, setSearch] = useState("");
 
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
   useEffect(() => {
     fetchProducts();
@@ -41,6 +47,20 @@ export default function ProductsPage() {
     );
   }, [products, search]);
 
+  const handleAddProduct = () => {
+    setSelectedProduct(null);
+    setDialogOpen(true);
+  };
+
+  const handleEditProduct = (product: Product) => {
+    setSelectedProduct(product);
+    setDialogOpen(true);
+  };
+  const handleDeleteProduct = (product: Product) => {
+    setProductToDelete(product);
+    setDeleteDialogOpen(true);
+  };
+
   if (loading) {
     return (
       <div className="flex h-[70vh] items-center justify-center">
@@ -60,22 +80,25 @@ export default function ProductsPage() {
       <ProductToolbar
         search={search}
         onSearchChange={setSearch}
-        onAddProduct={() => setDialogOpen(true)}
+        onAddProduct={handleAddProduct}
       />
 
       <ProductTable
         products={filteredProducts}
-        onEdit={function (product: Product): void {
-          throw new Error("Function not implemented.");
-        }}
-        onDelete={function (product: Product): void {
-          throw new Error("Function not implemented.");
-        }}
+        onEdit={handleEditProduct}
+        onDelete={handleDeleteProduct}
       />
 
       <ProductDialog
         open={dialogOpen}
         onOpenChange={setDialogOpen}
+        onSuccess={fetchProducts}
+        product={selectedProduct}
+      />
+      <DeleteProductDialog
+        open={deleteDialogOpen}
+        onOpenChange={setDeleteDialogOpen}
+        product={productToDelete}
         onSuccess={fetchProducts}
       />
     </div>

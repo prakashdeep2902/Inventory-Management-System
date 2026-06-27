@@ -31,12 +31,14 @@ export const createProductService = async (productData) => {
 };
 
 export const getAllProductsService = async () => {
+  console.log("ajsbdkja");
   const products = await prisma.product.findMany({
     orderBy: {
       createdAt: "desc",
     },
   });
 
+  console.log("products:::==>", products);
   return products;
 };
 
