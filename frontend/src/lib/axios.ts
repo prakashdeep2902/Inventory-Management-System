@@ -7,6 +7,7 @@ const axiosInstance = axios.create({
   },
 });
 
+// Attach JWT token to every request
 axiosInstance.interceptors.request.use(
   (config) => {
     if (typeof window !== "undefined") {
@@ -22,11 +23,14 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
+// Handle unauthorized responses
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (typeof window !== "undefined" && error.response?.status === 401) {
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
       window.location.href = "/login";
     }
 
