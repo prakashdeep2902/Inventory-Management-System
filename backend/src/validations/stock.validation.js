@@ -1,4 +1,4 @@
-export const validateStockIn = (req, res, next) => {
+export const validateStock = (req, res, next) => {
   const { productId, quantity } = req.body;
 
   if (!productId || quantity === undefined) {
