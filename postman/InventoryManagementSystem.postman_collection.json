@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "f752ef57-9ab5-4160-a980-fe822cee2d03",
+		"name": "InventoryManagementSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22951708",
+		"_collection_link": "https://winter-resonance-957158.postman.co/workspace/Team-Workspace~55ce2388-4633-4659-8d7d-282a214a0a91/collection/22951708-f752ef57-9ab5-4160-a980-fe822cee2d03?action=share&source=collection_link&creator=22951708"
+	},
+	"item": [
+		{
+			"name": "PoductAPIS",
+			"item": [
+				{
+					"name": "after_login_profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNDk0MjA1LCJleHAiOjE3ODI1ODA2MDV9.8obTPWBM-LVt3UGk_s_ynNo0HqtBqc02m4SnUZ1SIug",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/auth/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNDk0MjA1LCJleHAiOjE3ODI1ODA2MDV9.8obTPWBM-LVt3UGk_s_ynNo0HqtBqc02m4SnUZ1SIug",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/products/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQ2MDU1LCJleHAiOjE3ODI2MzI0NTV9.ueLL0wYfFkkmfBZaawl8GGyBdIytceRZTjkchL9SLBg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 10,\r\n    \"name\": \"Braided USB-C Cable (6ft)\",\r\n    \"description\": \"Heavy-duty fast charging cable compatible with most devices.\",\r\n    \"sku\": \"CBL-USBC-010\",\r\n    \"price\": 14.99,\r\n    \"quantity\": 500,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "byid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNDk5MjQ3LCJleHAiOjE3ODI1ODU2NDd9.YYX3LFZ_zNJCy4bZWvpPutGe7gHjJntRl3pK9MWZt9s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/products/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNDk5MjQ3LCJleHAiOjE3ODI1ODU2NDd9.YYX3LFZ_zNJCy4bZWvpPutGe7gHjJntRl3pK9MWZt9s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"mackBook\",\r\n  \"sku\": \"WM-003\",\r\n  \"description\": \"Higlevel\",\r\n  \"price\": 2000,\r\n  \"quantity\": 5000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/products/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNDk5MjQ3LCJleHAiOjE3ODI1ODU2NDd9.YYX3LFZ_zNJCy4bZWvpPutGe7gHjJntRl3pK9MWZt9s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/products/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AuthAPIS",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Prakash\",\r\n  \"email\": \"prakash@example.com\",\r\n  \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"prakash@example.com\",\r\n  \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StocksAPIS",
+			"item": [
+				{
+					"name": "stockIn",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQxMzEzLCJleHAiOjE3ODI2Mjc3MTN9.Fz3-cP2QYf2OFZEf9eEWJPfSCY7SOkWTnK19IhgUTEs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": 1,\r\n  \"quantity\": 10000,\r\n  \"note\": \"Initial stock refill\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/stock/in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"stock",
+								"in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stockOut",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQxMzEzLCJleHAiOjE3ODI2Mjc3MTN9.Fz3-cP2QYf2OFZEf9eEWJPfSCY7SOkWTnK19IhgUTEs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": 1,\r\n  \"quantity\": 5,\r\n  \"note\": \"out of stock\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/stock/out",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"stock",
+								"out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHistoryStocks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQxMzEzLCJleHAiOjE3ODI2Mjc3MTN9.Fz3-cP2QYf2OFZEf9eEWJPfSCY7SOkWTnK19IhgUTEs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/stock/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"stock",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHistoryById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQxMzEzLCJleHAiOjE3ODI2Mjc3MTN9.Fz3-cP2QYf2OFZEf9eEWJPfSCY7SOkWTnK19IhgUTEs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/stock/history/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"stock",
+								"history",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrdersAPIS",
+			"item": [
+				{
+					"name": "createOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQ2OTM0LCJleHAiOjE3ODI2MzMzMzR9.aIU24h4wOSiVvDwGgDeHcfSa0l-RZvsoRjIoDWim_iY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQ2OTM0LCJleHAiOjE3ODI2MzMzMzR9.aIU24h4wOSiVvDwGgDeHcfSa0l-RZvsoRjIoDWim_iY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/orders/1/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders",
+								"1",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwcmFrYXNoQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzgyNTQ2OTM0LCJleHAiOjE3ODI2MzMzMzR9.aIU24h4wOSiVvDwGgDeHcfSa0l-RZvsoRjIoDWim_iY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/dashboard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
