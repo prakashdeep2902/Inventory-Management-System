@@ -64,6 +64,8 @@ export const loginUser = async ({ email, password }) => {
     where: { email },
   });
 
+  console.log("user::::===>", user);
+
   if (!user) {
     return {
       status: 401,

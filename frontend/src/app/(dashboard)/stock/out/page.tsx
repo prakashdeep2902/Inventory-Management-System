@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Minus } from "lucide-react";
 import { toast } from "sonner";
-
 import { Button } from "@/components/ui/button";
 
 import StockOutDialog from "@/components/stock/StockOutDialog";

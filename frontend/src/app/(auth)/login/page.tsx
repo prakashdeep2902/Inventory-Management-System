@@ -2,14 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -27,27 +24,26 @@ import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginPage() {
   const router = useRouter();
-
   const { login } = useAuth();
-
   const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<LoginSchemaType>({
-    resolver: zodResolver(loginSchema),
-  });
+  } = useForm<LoginSchemaType>({ resolver: zodResolver(loginSchema) });
 
-  const onSubmit = async (data: LoginSchemaType) => {
+  const onSubmit = async (
+    data: LoginSchemaType,
+    e?: React.BaseSyntheticEvent,
+  ) => {
+    e?.preventDefault(); // Not necessary
     try {
       const response = await authService.login(data);
+      console.log(response);
 
       login(response.token, response.data);
-
       toast.success(response.message);
-
       router.replace("/dashboard");
     } catch (error) {
       if (axios.isAxiosError(error)) {

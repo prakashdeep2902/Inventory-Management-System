@@ -22,6 +22,7 @@ export const register = async (req, res) => {
 // Login Controller
 export const login = async (req, res) => {
   try {
+    console.log("req.body:::===>", req.body);
     const result = await loginUser(req.body);
 
     return res.status(result.status).json({
